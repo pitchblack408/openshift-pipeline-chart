@@ -1,0 +1,19 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+  name: {{ .Release.Name }}-trigger-template
+spec:
+  params:
+    - name: username
+      default: {{ .Values.pipeline.params.username }}
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        generateName: {{ .Release.Name }}-pipeline-run-
+      spec:
+        pipelineRef:
+          name: {{ .Release.Name }}-pipeline
+        params:
+          - name: username
+            value: $(tt.params.username)

@@ -1,0 +1,38 @@
+# General files for the project
+pkg/*
+*.pyc
+bin/*
+.project
+/.bin
+/_test/secrets/*.json
+
+# OSX-specific files
+._*
+
+# IntelliJ IDEA files
+#.idea/modules.xml
+#.idea/*.iml
+#.idea/modules
+.idea
+*.iml
+*.ipr
+
+# CMake files
+cmake-build-*/
+
+# Mongo Explorer plugin files
+#.idea/**/mongoSettings.xml
+
+# Editor-based Rest Client files
+#.idea/httpRequests
+
+# Android studio 3.1+ serialized cache file
+#.idea/caches/build_file
+
+# Crashlytics plugin files
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
+# Cursive Clojure plugin files
+#.idea/replstate.xml

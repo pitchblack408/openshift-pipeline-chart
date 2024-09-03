@@ -1,0 +1,12 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  name: {{ .Release.Name }}-event-listener
+spec:
+  serviceAccountName: {{ .Values.serviceAccount.name }}
+  triggers:
+    - name: {{ .Release.Name }}-trigger
+      bindings:
+        - ref: {{ .Release.Name }}-trigger-binding
+      template:
+        ref: {{ .Release.Name }}-trigger-template

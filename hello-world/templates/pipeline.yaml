@@ -1,0 +1,21 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: {{ .Release.Name }}-pipeline
+spec:
+  params:
+    - default: {{ .Values.pipeline.params.username }}
+      name: username
+      type: string
+  tasks:
+    - name: hello
+      taskRef:
+        name: hello
+    - name: goodbye
+      runAfter:
+        - hello
+      taskRef:
+        name: goodbye
+      params:
+        - name: username
+          value: $(params.username)
